@@ -26,16 +26,17 @@ public:
         }
     }
     
-    int findParent(int node){
+    int find(int node){
         if(parent[node] == node){
             return node;
         }
-        return parent[node] = findParent(parent[node]);
+        return parent[node] = find(parent[node]);
     }
     
-    void unionFunc(int u, int v){
-        u = findParent(u);
-        v = findParent(v);
+    void unionf(int u, int v){
+        u = find(u);
+        v = find(v);
+        if(u == v) return;
         if(rank[u] < rank[v]){
             merge(u, v);
             parent[u] = v;
