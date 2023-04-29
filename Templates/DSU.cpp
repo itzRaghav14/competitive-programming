@@ -11,7 +11,7 @@ public:
         parent.resize(N + 1);
         sizes.resize(N + 1);
         rank.resize(N + 1);
-        makeSet();
+        makeSet(N);
     }
     
     void merge(int child, int par){
@@ -19,8 +19,8 @@ public:
         return;
     }
     
-    void makeSet(){
-        for(int i = 0; i <= N; i++){
+    void makeSet(int n){
+        for(int i = 0; i <= n; i++){
             parent[i] = i;
             sizes[i] = 1;
             rank[i] = 0;
