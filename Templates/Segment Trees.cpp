@@ -1,74 +1,96 @@
+
 // === Segment Tree ===
 
-struct item{
-    int sum, mx, pre, suf;
+struct Item{
+    long long sum;
+    int mx, mn;
 };
 
-class segtree{
+template <typename T>
+class SegmentTree{
+private: 
+	
+	int size = 0;
+	vector<Item> seg;
+	
+    Item NEUTRAL_ELEMENT = {0, -MX, MX};
+	
+	Item single (int val) {
+		return {val, val, val};
+	}
+	
+	Item merge (Item left, Item right) {
+		Item node = NEUTRAL_ELEMENT;
+		node.sum = left.sum + right.sum;
+		node.mn = min(left.mn, right.mn);
+		node.mx = max(left.mx, right.mx);
+		return node;
+	}
+	
+    void build (int low, int high, int ind, vector<T> &arr) {
+    	if(low == high) {
+    		seg[ind] = single(arr[low]);
+    		return;
+    	}
+    	int mid = (low + high) / 2;
+    	int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
+    	build(low, mid, leftInd, arr);
+    	build(mid + 1, high, rightInd, arr);
+    	seg[ind] = merge(seg[leftInd], seg[rightInd]);
+    }
+	
+	Item query (int low, int high, int ind, int left, int right) {
+		if(low > right || high < left) {
+			return NEUTRAL_ELEMENT;
+		}
+		if(low >= left && high <= right) {
+			return seg[ind];
+		}
+		int mid = (low + high) / 2;
+		int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
+		Item leftItem = query(low, mid, leftInd, left, right);
+		Item rightItem = query(mid + 1, high, rightInd, left, right);
+		return merge(leftItem, rightItem);
+	}
+	
+	void update (int low, int high, int ind, int index, int value) {
+		if(low == high) {
+			seg[ind] = single(value);
+			return;
+		}
+		int mid = (low + high) / 2;
+		int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
+		if(index <= mid) update(low, mid, leftInd, index, value);
+		else update(mid + 1, high, rightInd, index, value);
+		seg[ind] = merge(seg[leftInd], seg[rightInd]);
+	}
+	
 public:
+	
+	SegmentTree () {
+		
+	}
     
-    vector<item> seg;
-    int n;
-    
-    item NEUTRAL_ELEMENT = {0, -INF, -INF, -INF};
-    
-    item single(int val){
-        int mxVal = max(0ll, val);
-        return {val, mxVal, mxVal, mxVal};
+    SegmentTree (int n) {
+    	size = n;
+    	seg.resize(4 * size + 1);
     }
     
-    item merge(item left, item right, int type = 1){
-        
-        item node = NEUTRAL_ELEMENT;
-        
-        
-        
-        return node;
-        
+    SegmentTree (vector<T> &arr) {
+    	size = arr.size();
+    	seg.resize(4 * size + 1);
+    	build(arr);
     }
     
-    
-    segtree(vector<int> &arr, int size = -1){
-        if(size == -1) size = arr.size();
-        n = size;
-        seg.resize(4 * n + 1);
-        build(arr);
+    void build (vector<T> &arr) {
+    	build(0, size - 1, 0, arr);
     }
     
-    void build(vector<int> &arr, int ind = 0, int low = 0, int high = -1){
-        if(high == -1) high = n -  1;
-        if(low == high){
-            seg[ind] = single(arr[low]);
-            return;
-        }
-        int mid = (low + high) / 2;
-        build(arr, 2 * ind + 1, low, mid);
-        build(arr, 2 * ind + 2, mid + 1, high);
-        seg[ind] = merge(seg[2 * ind + 1], seg[2 * ind + 2]);
+    Item query (int left, int right) {
+    	return query(0, size - 1, 0, left, right);
     }
     
-    item query(int l, int r, int type = 1, int ind = 0, int low = 0, int high = -1){
-        if(high == -1) high = n - 1;
-        if(low > r || high < l){
-            return NEUTRAL_ELEMENT;
-        }
-        if(low >= l && high <= r) return seg[ind];
-        int mid = (low + high) / 2;
-        item left = query(l, r, 1, 2 * ind + 1, low, mid);
-        item right = query(l, r, 1, 2 * ind + 2, mid + 1, high);
-        return merge(left, right);        
+    void update (int index, int value) {
+    	return update(0, size - 1, 0, index, value);
     }
-    
-    void update(int i, int v, int ind = 0, int low = 0, int high = -1){
-        if(high == -1) high = n - 1;
-        if(low == high){
-            seg[ind] = single(v);
-            return;
-        }
-        int mid = (low + high) / 2;
-        if(i <= mid) update(i, v, 2 * ind + 1, low, mid);
-        else update(i, v, 2 * ind + 2, mid + 1, high);
-        seg[ind] = merge(seg[2 * ind + 1], seg[2 * ind + 2]);
-    }
-    
 };
