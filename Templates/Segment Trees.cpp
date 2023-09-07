@@ -1,3 +1,4 @@
+
 // === Segment Tree ===
 struct Node;
 struct Update;
