@@ -1,50 +1,51 @@
 
 // === Segment Tree ===
 struct Node;
+struct Update;
 
-template <typename T, typename Node = Node>
-class SegmentTree{
+template <typename T, typename Node = Node, typename Update = Update>
+class SegmentTree {
 private: 
 	int size = 0;
 	vector<Node> seg;
-		
-    void build (int low, int high, int ind, vector<T> &arr) {
-    	if(low == high) {
-    		seg[ind] = Node(arr[low]);
+	
+    void build (int start, int end, int ind, vector<T> &arr) {
+    	if(start == end) {
+    		seg[ind] = Node(arr[start]);
     		return;
     	}
-    	int mid = (low + high) / 2;
+    	int mid = (start + end) / 2;
     	int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
-    	build(low, mid, leftInd, arr);
-    	build(mid + 1, high, rightInd, arr);
+    	build(start, mid, leftInd, arr);
+    	build(mid + 1, end, rightInd, arr);
     	seg[ind].merge(seg[leftInd], seg[rightInd]);
     }
 	
-	Node query (int low, int high, int ind, int left, int right) {
-		if(low > right || high < left) {
+	Node query (int start, int end, int ind, int left, int right) {
+		if(start > right || end < left) {
 			return Node();
 		}
-		if(low >= left && high <= right) {
+		if(start >= left && end <= right) {
 			return seg[ind];
 		}
-		int mid = (low + high) / 2;
+		int mid = (start + end) / 2;
 		int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
 		Node res;
-		Node leftItem = query(low, mid, leftInd, left, right);
-		Node rightItem = query(mid + 1, high, rightInd, left, right);
+		Node leftItem = query(start, mid, leftInd, left, right);
+		Node rightItem = query(mid + 1, end, rightInd, left, right);
 		res.merge(leftItem, rightItem);
 		return res;
 	}
 	
-	void update (int low, int high, int ind, int index, int value) {
-		if(low == high) {
-			seg[ind] = Node(value);
+	void update (int start, int end, int ind, int index, Update &u) {
+		if(start == end) {
+			u.apply(seg[ind]);
 			return;
 		}
-		int mid = (low + high) / 2;
+		int mid = (start + end) / 2;
 		int leftInd = 2 * ind + 1, rightInd = 2 * ind + 2;
-		if(index <= mid) update(low, mid, leftInd, index, value);
-		else update(mid + 1, high, rightInd, index, value);
+		if(index <= mid) update(start, mid, leftInd, index, u);
+		else update(mid + 1, end, rightInd, index, u);
 		seg[ind].merge(seg[leftInd], seg[rightInd]);
 	}
 	
@@ -73,7 +74,8 @@ public:
     }
     
     void update (int index, int value) {
-    	return update(0, size - 1, 0, index, value);
+    	Update u = Update(value);
+    	return update(0, size - 1, 0, index, u);
     }
 };
 
@@ -82,7 +84,6 @@ struct Node {
     int mx, mn;
     
     Node () : sum(0), mx(-MX), mn(MX) {}
-    
     Node (int val) : sum(val), mx(val), mn(val) {}
     
     void merge (Node &left, Node &right) {
@@ -90,4 +91,15 @@ struct Node {
     	mx = max(left.mx, right.mx);
     	mn = min(left.mn, right.mn);
     }
+};
+
+struct Update {
+	int val;
+	
+	Update () : val(0) {}
+	Update (int v) : val(v) {}
+	
+	void apply (Node &node) {
+		node = Node(val);
+	}
 };
