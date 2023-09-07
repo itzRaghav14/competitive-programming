@@ -1,4 +1,3 @@
-
 // === Segment Tree ===
 struct Node;
 struct Update;
@@ -100,6 +99,8 @@ struct Update {
 	Update (int v) : val(v) {}
 	
 	void apply (Node &node) {
-		node = Node(val);
+		node.sum = val;
+		node.mn = val;
+		node.mx = val;
 	}
 };
