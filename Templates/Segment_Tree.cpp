@@ -56,8 +56,8 @@ public:
     SegmentTree (int n) {
     	size = n;
     	seg.resize(4 * size + 1);
-		vector<T> arr (n + 1, 0);
-		build(arr);
+    	vector<T> arr(n, 0);
+    	build(arr);
     }
     
     SegmentTree (vector<T> &arr) {
