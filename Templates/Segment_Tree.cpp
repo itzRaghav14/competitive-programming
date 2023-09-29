@@ -82,7 +82,7 @@ struct Node {
     long long sum;
     int mx, mn;
     
-    Node () : sum(0), mx(-MX), mn(MX) {}
+    Node () : sum(0), mx(-1e9), mn(1e9) {}
     Node (int val) : sum(val), mx(val), mn(val) {}
     
     void merge (Node &left, Node &right) {
