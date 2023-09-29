@@ -1,4 +1,3 @@
-
 // === Lazy Segment Tree ===
 struct Node;
 struct Update;
@@ -83,8 +82,8 @@ public:
     	seg.resize(4 * size + 1);
     	lazy.resize(4 * size + 1);
     	updates.resize(4 * size + 1);
-	vector<T> arr (n, 0);
-	build(arr);
+		vector<T> arr (n, 0);
+		build(arr);
     }
     
     LazySegmentTree (vector<T> &arr) {
@@ -107,36 +106,4 @@ public:
     	Update u = Update(value);
     	return update(0, size - 1, 0, left, right, u);
     }
-};
-
-struct Node {
-    long long sum;
-    int mx, mn;
-    
-    Node () : sum(0), mx(-1e9), mn(1e9) {}
-    Node (int val) : sum(val), mx(val), mn(val) {}
-    
-    void merge (Node &left, Node &right) {
-    	sum = left.sum + right.sum;
-    	mx = max(left.mx, right.mx);
-    	mn = min(left.mn, right.mn);
-    }
-};
-
-struct Update {
-	int val;
-	
-	Update () : val(0) {}
-	Update (int v) : val(v) {}
-	
-	void apply (int start, int end, Node &node) {
-		int len = end - start + 1;
-		node.sum = len * val;
-		node.mn = val;
-		node.mx = val;
-	}
-	
-	void combine (int start, int end, Update &u) {
-		val = u.val;
-	}
 };
