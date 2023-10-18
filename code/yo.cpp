@@ -26,10 +26,10 @@ int main() {
 	int t = 1;
 	cin >> t;
 	
-	for(int _t = 1; _t <= t; _t++) {
-		debug(Testcase, _t);
+	for(int tc = 1; tc <= t; tc++) {
+		debug(Testcase, tc);
 		solve();
-		crndl;
+		dbg ();
 	}
 	
 	return 0;
