@@ -62,16 +62,7 @@ int msb(int n){
 }
 
 // === Decimal to Binary ===
-string decToBinary(int n, int len = 0){
-    if(n == 0) return "0";
-    string binaryNum;
-    while (n > 0) {
-        binaryNum.pb('0' + n%2);
-        n /= 2;
-    }
-    reverse(all(binaryNum));
-    string res = "";
-    for (int i = 0; i < len - binaryNum.length(); i++) res += '0';
-    res += binaryNum;
-    return res;
+template<int T = 64>
+bitset<T> binary (unsigned long long n) {
+    return bitset<T> {n};
 }
