@@ -21,8 +21,8 @@ int powermod(int a, int b, int m = MOD){
 }
 
 // === Modulo Multiplicative Inverse ===
-int mul_inv(int a, int Mod = MOD){
-    return powermod(a, Mod-2, Mod);
+int mul_inv(int a, int m = MOD){
+    return powermod(a, m - 2, m);
 }
 
 // === GCD ===
