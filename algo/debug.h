@@ -1,13 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define dbg(x...) cerr << #x << " "; _print(x); cerr << endl;
-#define debug(x,y...) cerr << #x << " -> "; _print(y); cerr << endl;
+#define dbg(x...) cerr << #x << "\t\t"; _print(x); cerr << endl;
+#define debug(x,y...) cerr << #x << "\t\t"; _print(y); cerr << endl;
 #define crndl cerr << "\n";
 
+// printing anything
 template <typename T> void _print (T t) { cerr << t; }
 void _print() {return;}
 
+void _print(array<int, 3> v) {cerr << "[ "; for (int i : v) {_print(i); cerr << " ";} cerr << "]";}
+
+// declarations
 template <class T, class V> void _print(pair <T, V> p);
 template <class T> void _print(vector <T> v);
 template <class T> void _print(set <T> v);
@@ -22,6 +26,7 @@ template <class T> void _print(deque <T> v);
 template <class T, class V> void _print(T a[], V n);
 template <class T, class V> void _print (T* a, V n, V m);
 
+// definitions
 template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.first); cerr << ","; _print(p.second); cerr << "}";}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
@@ -36,5 +41,6 @@ template <class T> void _print(priority_queue<T, vector<T>, greater<T>> pq) {cer
 template <class T, class V> void _print(T a[], V n) { cerr << "[ "; for(int i = 0; i < n; i++) { _print(a[i]); cerr << " "; } cerr << "]"; }
 template <class T, class V> void _print (T* a,V n, V m) { cerr << "[ "; for(int i = 0; i < n; i++) { _print(a + i * m, m); cerr << " "; } cerr << "]"; }
 
+// multiple printing
 template <class T, class... V> void _print(T t, V... v) {_print(t); if(sizeof...(v)) {cerr<<", "; _print(v...);}}
-// template <class T> void _print(oset<T> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
+// template<typename T, typename ComparatorFn> void _print(oset<T, ComparatorFn> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
