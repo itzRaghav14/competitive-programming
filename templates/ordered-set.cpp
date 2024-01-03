@@ -6,4 +6,4 @@ template <typename Type, typename ComparatorFn = less<Type>>
 using oset = tree<Type, null_type, ComparatorFn, rb_tree_tag, tree_order_statistics_node_update>;
 
 // methods -> *find_by_order, order_of_key
-// comparators -> less, lesser_equal, greater, greater_equal
+// comparators -> less, less_equal, greater, greater_equal
