@@ -3,7 +3,6 @@ using namespace std;
 
 #define dbg(x...) cerr << #x << "\t\t"; _print(x); cerr << endl;
 #define debug(x,y...) cerr << #x << "\t\t"; _print(y); cerr << endl;
-#define crndl cerr << "\n";
 
 // printing anything
 template <typename T> void _print (T t) { cerr << t; }
