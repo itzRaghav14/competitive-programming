@@ -1,0 +1,57 @@
+{
+	"long long": {
+		"scope": "cpp",
+		"prefix": "ll",
+		"body": [
+			"long long"
+		]
+	},
+
+	"vector<int>": {
+		"scope": "cpp",
+		"prefix": "vi",
+		"body": [
+			"vector<int>"
+		]
+	},
+
+	"vector<long long>": {
+		"scope": "cpp",
+		"prefix": "vll",
+		"body": [
+			"vector<long long>"
+		]
+	},
+
+	"vector<vector<int>>": {
+		"scope": "cpp",
+		"prefix": "vvi",
+		"body": [
+			"vector<vector<int>>"
+		]
+	},
+
+	"vector<vector<long long>>": {
+		"scope": "cpp",
+		"prefix": "vvll",
+		"body": [
+			"vector<vector<long long>>"
+		]
+	},
+
+	"pair<int,int>": {
+		"scope": "cpp",
+		"prefix": "pi",
+		"body": [
+			"pair<int,int>"
+		]
+	},
+
+	"vector<pair<int,int>>": {
+		"scope": "cpp",
+		"prefix": "vpi",
+		"body": [
+			"vector<pair<int,int>>"
+		]
+	}
+}

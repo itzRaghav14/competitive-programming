@@ -2,7 +2,14 @@
   "files.associations": {
     "chrono": "cpp",
     "iostream": "cpp",
-    "array": "cpp"
+    "array": "cpp",
+    "ostream": "cpp",
+    "*.tcc": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "valarray": "cpp"
   },
-  "editor.tabSize": 4
 }

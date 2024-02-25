@@ -9,9 +9,9 @@ using namespace std;
 #endif
 
 void solve() {
-	
-	
-	
+    
+    
+    
 }
 
 int main() {
@@ -21,15 +21,15 @@ int main() {
     freopen("io/output.txt", "w", stdout);
     freopen("io/error.txt", "w", stderr);
     #endif
-	
-	int t = 1;
-	cin >> t;
-	
-	for (int tc = 1; tc <= t; tc++) {
-		debug(Testcase, tc);
-		solve();
-		dbg();
-	}
-	
-	return 0;
+    
+    int t = 1;
+    cin >> t;
+    
+    for (int tc = 1; tc <= t; tc++) {
+        debug(Testcase, tc);
+        solve();
+        dbg();
+    }
+    
+    return 0;
 }

@@ -1,0 +1,60 @@
+{
+	"include debug": {
+		"scope": "cpp",
+		"prefix": "snippet-include-debug",
+		"body": [
+			"#ifndef ONLINE_JUDGE"
+			"#include \"algo/debug.h\""
+			"#else"
+			"#define dbg(...) ;"
+			"#define debug(...) ;"
+			"#endif"
+		]
+	},
+
+	"fastio": {
+		"scope": "cpp",
+		"prefix": "snippet-fastio",
+		"body": [
+			"ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);"
+		]
+	},
+
+	"template": {
+		"scope": "cpp",
+		"prefix": "snippet-template",
+		"body": [
+			"#include <bits/stdc++.h>"
+			"using namespace std;"
+			""
+			"#ifndef ONLINE_JUDGE"
+			"#include \"algo/debug.h\""
+			"#else"
+			"#define dbg(...) ;"
+			"#define debug(...) ;"
+			"#endif"
+			""
+			"void solve() {"
+			"	"
+			"	$1"
+			"	"
+			"}"
+			""
+			"int main() {"
+			"	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);"
+			"	"
+			"	int t = 1;"
+			"	cin >> t;"
+			"	"
+			"	for (int tc = 1; tc <= t; tc++) {"
+			"		debug(Testcase, tc);"
+			"		solve();"
+			"		dbg();"
+			"	}"
+			"	"
+			"	return 0;"
+			"}"
+		]
+	},
+	
+}
