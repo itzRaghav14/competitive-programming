@@ -10,6 +10,20 @@
     "list": "cpp",
     "string": "cpp",
     "vector": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "algorithm": "cpp",
+    "unordered_set": "cpp",
+    "type_traits": "cpp",
+    "numeric": "cpp",
+    "complex": "cpp",
+    "functional": "cpp",
+    "optional": "cpp",
+    "string_view": "cpp",
+    "tuple": "cpp",
+    "utility": "cpp"
   },
+  "editor.lineNumbers": "on",
+  "editor.tabSize": 4
 }

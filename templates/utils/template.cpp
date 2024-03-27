@@ -6,6 +6,7 @@ using namespace std;
 #else
 #define dbg(...) ;
 #define debug(...) ;
+#define crndl ;
 #endif
 
 void solve() {
@@ -28,7 +29,7 @@ int main() {
     for (int tc = 1; tc <= t; tc++) {
         debug(Testcase, tc);
         solve();
-        dbg();
+        crndl;
     }
     
     return 0;

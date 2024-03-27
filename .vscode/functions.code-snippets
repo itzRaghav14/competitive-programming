@@ -1,0 +1,17 @@
+{
+	"ckmax": {
+		"scope": "cpp",
+		"prefix": "function-ckmax",
+		"body": [
+			"template<typename T, typename V> bool ckmax(T &a, V b) { return (long long) a < (long long) b ? a = b, 1: 0; }"
+		]
+	},
+
+	"ckmin": {
+		"scope": "cpp",
+		"prefix": "function-ckmin",
+		"body": [
+			"template<typename T, typename V> bool ckmax(T &a, V b) { return a > b ? a = b, 1: 0; }"
+		]
+	}
+}
