@@ -30,6 +30,8 @@ struct StringHash {
                 ps[j] = (Q[j] * ps[j] + s[i - 1] + 1) % M[j];
             }
         }
+
+        return ps;
     }
 
     array<ll, K> substrHash(int start, int end)  {

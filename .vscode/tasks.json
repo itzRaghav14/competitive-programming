@@ -2,59 +2,54 @@
   "version": "2.0.0",
   "tasks": [
     {
-        "label": "compile",
-        "type": "shell",
-        "command": "g++",
-        "args": [
-            "-std=c++17",
-            "-o",
-            "${fileBasenameNoExtension}",
-            "${file}"
-        ],
-        "group": {
-            "kind": "build",
-            "isDefault": false
-        }
+      "label": "compile",
+      "type": "shell",
+      "command": "g++",
+      "args": ["-std=c++17", "-o", "${fileBasenameNoExtension}", "${file}"],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
     },
     {
-        "label": "compile and run in terminal",
-        "type": "shell",
-        "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension}",
-        "group": {
-            "kind": "build",
-            "isDefault": false
-        },
-        "problemMatcher": []
+      "label": "compile and run in terminal",
+      "type": "shell",
+      "command": "g++ -std=c++17 -include build/stdafx.h -DitzzRaghav -o a.exe ${file} && ./a.exe",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
     },
     {
-        "label": "compile and run in files",
-        "type": "shell",
-        "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < io/input.txt > io/output.txt 2> io/error.txt",
-        "group": {
-            "kind": "build",
-            "isDefault": false
-        },
-        "problemMatcher": []
+      "label": "compile and run in files",
+      "type": "shell",
+      "command": "g++ -std=c++17 -include build/stdafx.h -DitzzRaghav -o a.exe ${file} && ./a.exe < io/input.txt > io/output.txt 2> io/error.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
     },
     {
-        "label": "compile and run in files with strict checking",
-        "type": "shell",
-        "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} -Wall -Wextra -O2 -fsanitize=address && ./${fileBasenameNoExtension} < io/input.txt > io/output.txt 2> io/error.txt",
-        "group": {
-            "kind": "build",
-            "isDefault": false
-        },
-        "problemMatcher": []
+      "label": "compile and run in files with very strict checking",
+      "type": "shell",
+      "command": "g++ -std=c++17 -include build/stdafx.h -DitzzRaghav -o a.exe ${file} -Wall -Wextra -pedantic -O2 -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -Wno-variadic-macros && ./a.exe < io/input.txt > io/output.txt 2> io/error.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
     },
     {
-        "label": "compile and run in files with very strict checking",
+        "label": "compile and run with cp.sh",
         "type": "shell",
-        "command": "g++ -std=c++17 -o ${fileBasenameNoExtension} ${file} -Wall -Wextra -pedantic -O2 -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector && ./${fileBasenameNoExtension} < io/input.txt > io/output.txt 2> io/error.txt",
+        "command": "./cp.sh compile ${file} && time ./cp.sh run",
         "group": {
             "kind": "build",
             "isDefault": true
         },
         "problemMatcher": []
     }
-]
+  ]
 }

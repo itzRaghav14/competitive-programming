@@ -22,8 +22,12 @@
     "optional": "cpp",
     "string_view": "cpp",
     "tuple": "cpp",
-    "utility": "cpp"
+    "utility": "cpp",
+    "bitset": "cpp",
+    "unordered_map": "cpp",
+    "iosfwd": "cpp",
+    "fstream": "cpp"
   },
-  "editor.lineNumbers": "on",
-  "editor.tabSize": 4
+  "editor.lineNumbers": "relative",
+  "editor.tabSize": 4,
 }

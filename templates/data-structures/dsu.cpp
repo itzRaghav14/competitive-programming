@@ -1,58 +1,21 @@
-// === Disjoint Set Union ===
-class DSU{
-public:
-    vector<int> parent;
-    vector<int> sizes;
-    vector<int> rank;
-    int N;
-    
-    DSU(int n){
-        N = n;
-        parent.resize(N + 1);
-        sizes.resize(N + 1);
-        rank.resize(N + 1);
-        makeSet(N);
+struct Dsu {
+    int n;
+    vector<int> par, sz;
+
+    Dsu(int n): n(n) {
+        par.resize(n + 1); sz.assign(n + 1, 1);
+        for (int i = 0; i <= n; i++) par[i] = i;
     }
-    
-    void merge(int child, int par){
-        
-        return;
-    }
-    
-    void makeSet(int n){
-        for(int i = 0; i <= n; i++){
-            parent[i] = i;
-            sizes[i] = 1;
-            rank[i] = 0;
-        }
-    }
-    
-    int find(int node){
-        if(parent[node] == node){
-            return node;
-        }
-        return parent[node] = find(parent[node]);
-    }
-    
-    void unionf(int u, int v){
-        u = find(u);
-        v = find(v);
-        if(u == v) return;
-        if(rank[u] < rank[v]){
-            merge(u, v);
-            parent[u] = v;
-            sizes[v] += sizes[u];
-        }
-        else if(rank[v] < rank[u]){
-            merge(v, u);
-            parent[v] = u;
-            sizes[u] += sizes[v];
-        }
-        else{
-            merge(v, u);
-            parent[v] = u;
-            sizes[u] += sizes[v];
-            rank[u]++;
-        }
+
+    int find(int u) { return par[u] = par[u] == u ? u :find(par[u]); }
+    int size(int u) { return sz[find(u)]; }
+    bool same(int u, int v) { return find(u) == find(v); }
+
+    bool unite(int u, int v) {
+        u = find(u), v = find(v);
+        if (u == v) return false;
+        if (sz[u] < sz[v]) swap(u, v);
+        par[v] = u, sz[u] += sz[v];
+        return true;
     }
 };

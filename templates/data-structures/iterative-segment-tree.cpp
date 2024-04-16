@@ -1,9 +1,9 @@
 struct Node {
     long long val;
     Node(): val(0) {}
-    Node(int v): val(v) {}
-    friend Node merge(Node a, Node b) {
-        return Node(a.val + b.val);
+    Node(long long v): val(v) {}
+    friend Node merge(Node l, Node r) {
+        return Node(l.val + r.val);
     }
     void update(long long v) {
         val = v;
@@ -14,12 +14,18 @@ struct SegmentTree {
     int n;
     vector<Node> seg;
 
-    SegmentTree(int n): n(n) {
+    SegmentTree(int n): n(n) { seg.resize(2 * n); }
+
+    template <typename Type>
+    SegmentTree(vector<Type> a) {
+        n = a.size();
         seg.resize(2 * n);
+        for (int i = 0; i < n; i++) seg[i + n] = Node(a[i]);
+        for (int i = n - 1; i > 0; i--) seg[i] = merge(seg[i << 1], seg[i << 1 | 1]);
     }
 
     void update(int i, long long v) {
-        for (seg[i += n].update(v); i > 1; i >>= 1) seg[i >> 1] = merge(seg[i], seg[i ^ 1]);
+        for (seg[i += n].update(v); i >>= 1; ) seg[i] = merge(seg[i << 1], seg[i << 1 | 1]);
     }
 
     Node query(int l, int r) {

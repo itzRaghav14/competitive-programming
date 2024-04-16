@@ -102,18 +102,17 @@ public:
     	return query(0, size - 1, 0, left, right);
     }
     
-    void update (int left, int right, int value) {
+    void update (int left, int right, long long value) {
     	Update u = Update(value);
     	return update(0, size - 1, 0, left, right, u);
     }
 };
 
 struct Node {
-    long long sum;
-    int mx, mn;
+    long long sum, mx, mn;
     
     Node () : sum(0), mx(-1e9), mn(1e9) {}
-    Node (int val) : sum(val), mx(val), mn(val) {}
+    Node (long long val) : sum(val), mx(val), mn(val) {}
     
     void merge (Node &left, Node &right) {
     	sum = left.sum + right.sum;
@@ -123,10 +122,10 @@ struct Node {
 };
 
 struct Update {
-	int val;
+	long long val;
 	
 	Update () : val(0) {}
-	Update (int v) : val(v) {}
+	Update (long long v) : val(v) {}
 	
 	void apply (int start, int end, Node &node) {
 		int len = end - start + 1;

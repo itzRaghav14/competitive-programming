@@ -1,5 +1,5 @@
-#define dbg(x...) cout << "[" << __LINE__ << "]\t[ " << #x << " ]\t\t"; debug_struct::_print(x); cout << endl;
-#define debug(x,y...) cout << "[" << __LINE__ << "]\t[ " << #x << " ]\t\t"; debug_struct::_print(y); cout << endl;
+#define dbg(x...) cout << "[" << __LINE__ - 9 << "]\t[ " << #x << " ]\t\t"; debug_struct::_print(x); cout << endl;
+#define debug(x,y...) cout << "[" << __LINE__ - 9 << "]\t[ " << #x << " ]\t\t"; debug_struct::_print(y); cout << endl;
 #define crndl cout << endl;
 
 // #define dbg(...) ;

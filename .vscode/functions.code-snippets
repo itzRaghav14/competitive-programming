@@ -1,17 +1,33 @@
 {
-	"ckmax": {
-		"scope": "cpp",
-		"prefix": "function-ckmax",
-		"body": [
-			"template<typename T, typename V> bool ckmax(T &a, V b) { return (long long) a < (long long) b ? a = b, 1: 0; }"
-		]
-	},
+    "ckmax": {
+        "scope": "cpp",
+        "prefix": "function-ckmax",
+        "body": [
+            "template<typename T, typename V> bool ckmax(T &a, V b) { return (long long) a < (long long) b ? a = b, 1: 0; }"
+        ]
+    },
 
-	"ckmin": {
-		"scope": "cpp",
-		"prefix": "function-ckmin",
-		"body": [
-			"template<typename T, typename V> bool ckmax(T &a, V b) { return a > b ? a = b, 1: 0; }"
-		]
-	}
+    "ckmin": {
+        "scope": "cpp",
+        "prefix": "function-ckmin",
+        "body": [
+            "template<typename T, typename V> bool ckmax(T &a, V b) { return a > b ? a = b, 1: 0; }"
+        ]
+    },
+
+    "square root": {
+        "scope": "cpp",
+        "prefix": "function-sqrt",
+        "body": [
+            "long long sqrt(long long x) {",
+            "    long long s = 0, e = 2e9, res = s;",
+            "    while (s <= e) {",
+            "        long long m = (s + e) / 2;",
+            "        if (m * m <= x) res = m, s = m + 1;",
+            "        else e = m - 1;",
+            "    }",
+            "    return res;",
+            "}",
+        ]
+    }
 }

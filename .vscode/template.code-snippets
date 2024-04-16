@@ -1,61 +1,74 @@
 {
-	"include debug": {
-		"scope": "cpp",
-		"prefix": "snippet-include-debug",
-		"body": [
-			"#ifndef ONLINE_JUDGE",
-			"#include \"algo/debug.h\"",
-			"#else",
-			"#define dbg(...) ;",
-			"#define debug(...) ;",
-			"#define crndl ;",
-			"#endif",
-		]
-	},
+    "include debug": {
+        "scope": "cpp",
+        "prefix": "snippet-include-debug",
+        "body": [
+            "#ifndef itzzRaghav",
+            "#define dbg(...) ;",
+            "#define debug(...) ;",
+            "#define crndl ;",
+            "#endif",
+        ]
+    },
 
-	"fastio": {
-		"scope": "cpp",
-		"prefix": "snippet-fastio",
-		"body": [
-			"ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);"
-		]
-	},
+    "fastio": {
+        "scope": "cpp",
+        "prefix": "snippet-fastio",
+        "body": [
+            "ios_base::sync_with_stdio(false); cin.tie(NULL);"
+        ]
+    },
 
-	"template": {
-		"scope": "cpp",
-		"prefix": "snippet-template",
-		"body": [
-			"#include <bits/stdc++.h>",
-			"using namespace std;",
-			"",
-			"#ifndef ONLINE_JUDGE",
-			"#include \"algo/debug.h\"",
-			"#else",
-			"#define dbg(...) ;",
-			"#define debug(...) ;",
-			"#define crndl ;",
-			"#endif",
-			"",
-			"void solve() {",
-			"    ",
-			"    $1",
-			"    ",
-			"}",
-			"",
-			"int main() {",
-			"    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);",
-			"    ",
-			"    int t = 1;",
-			"    cin >> t;",
-			"    ",
-			"    for (int tc = 1; tc <= t; tc++) {",
-			"        debug(Testcase, tc);",
-			"        solve();",
-			"        crndl;",
-			"    }",
-			"    ",
-			"    return 0;",
-			"}",
-		]
-	}
+    "template": {
+        "scope": "cpp",
+        "prefix": "snippet-template",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "#ifndef itzzRaghav",
+            "#define dbg(...) ;",
+            "#define debug(...) ;",
+            "#define crndl ;",
+            "#endif",
+            "",
+            "int main() {",
+            "    ios_base::sync_with_stdio(false); cin.tie(NULL);",
+            "    ",
+            "    auto solve = [&] () {",
+            "        $1",
+            "    };",
+            "    ",
+            "    int t = 1;",
+            "    cin >> t;",
+            "    ",
+            "    for (int tc = 1; tc <= t; tc++) {",
+            "        debug(Testcase, tc);",
+            "        solve();",
+            "        crndl;",
+            "    }",
+            "    ",
+            "    return 0;",
+            "}",
+        ]
+    },
+
+    "testcases": {
+        "scope": "cpp",
+        "prefix": "snippet-testcases",
+        "body": [
+            "auto solve = [&] () {",
+            "    $1",
+            "};",
+            "",
+            "int t;",
+            "cin >> t;",
+            "",
+            "for (int tc = 1; tc <= t; tc++) {",
+            "    debug(Testcase, tc);",
+            "    solve();",
+            "    crndl;",
+            "}"
+        ]
+    },
 }

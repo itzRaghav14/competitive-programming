@@ -8,13 +8,13 @@ using namespace std;
 #endif
 
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
     auto solve = [&] () {
-
+        
     };
     
-    int t = 1;
+    int t;
     cin >> t;
     
     for (int tc = 1; tc <= t; tc++) {
@@ -22,6 +22,6 @@ int main() {
         solve();
         crndl;
     }
-    
+
     return 0;
 }
