@@ -1,5 +1,5 @@
 // Prime or Not
-bool isPrime(int n){
+bool isPrime(int n) {
     if (n == 2 || n == 3) return true;
     if (n <= 1 || n % 2 == 0 || n % 3 == 0) return false; 
     for (int i = 5; i * i <= n; i += 6) {
@@ -9,7 +9,7 @@ bool isPrime(int n){
 }
 
 // === Binary Exponentiation ===
-int powermod(int a, int b, int m = MOD){
+int powermod(int a, int b, int m = MOD) {
     int res = 1;
     a %= m;
     while (b > 0){
@@ -21,23 +21,23 @@ int powermod(int a, int b, int m = MOD){
 }
 
 // === Modulo Multiplicative Inverse ===
-int mul_inv(int a, int m = MOD){
+int mul_inv(int a, int m = MOD) {
     return powermod(a, m - 2, m);
 }
 
 // === GCD ===
-int gcd(int a, int b){
+int gcd(int a, int b) {
     if(b == 0) return a;
     return gcd(b, a % b);
 }
 
 // === LCM ===
-int lcm(int a, int b){
+int lcm(int a, int b) {
     return (a / gcd(a, b) * b);
 }
 
 // === Lease Significant Bit ===
-int lsb(int n){
+int lsb(int n) {
     if(n==0) return -1;
     int res = 0;
     while(n){
@@ -49,7 +49,7 @@ int lsb(int n){
 }
 
 // === Most Significant Bit ===
-int msb(int n){
+int msb(int n) {
     if (n == 0) return -1;
     int res = 0;
     n = n / 2;
@@ -63,6 +63,6 @@ int msb(int n){
 
 // === Decimal to Binary ===
 template<int T = 64>
-bitset<T> binary (unsigned long long n) {
+bitset<T> binary(unsigned long long n) {
     return bitset<T> {n};
 }

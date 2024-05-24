@@ -1,3 +1,5 @@
+// const int LOG = 20;
+
 struct BinaryLifting {
     int n;
     vector<int> lvl;

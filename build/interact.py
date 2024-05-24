@@ -99,7 +99,7 @@ args = parser.parse_args()
 
 solution = ProcessThread(args.solution)
 interactor = ProcessThread(args.interactor)
-testcases = 1000
+testcases = 10000
 HANG_TIMEOUT = args.hang_timeout
 
 

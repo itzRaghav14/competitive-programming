@@ -29,5 +29,52 @@
             "    return res;",
             "}",
         ]
-    }
+    },
+
+    "lsb": {
+        "scope": "cpp",
+        "prefix": "function-lsb",
+        "body": [
+            "int lsb(long long x) { return x ? __builtin_ctzll(x) : -1; }"
+        ]
+    },
+
+    "msb": {
+        "scope": "cpp",
+        "prefix": "function-msb",
+        "body": [
+            "int msb(long long x) { return 63 - __builtin_clzll(x); }"
+        ]
+    },
+
+    "binary search": {
+        "scope": "cpp",
+        "prefix": "function-binary-search",
+        "body": [
+            "template<typename T>",
+            "T binary_search(T l, T r, auto &&f) {",
+            "    while (r - l > 1) {",
+            "        T m = l + (r - l) / 2;",
+            "        if (f(m)) l = m;",
+            "        else r = m;",
+            "    }",
+            "    return r;",
+            "}"
+        ]
+    },
+
+    "power": {
+        "scope": "cpp",
+        "prefix": "function-power",
+        "body": [
+            "int power(int a, int b, int m) {",
+            "    int res = 1;",
+            "    while (b) {",
+            "        if (b & 1) res = 1LL * res * a % m;",
+            "        b >>= 1, a = 1LL * a * a % m;",
+            "    }",
+            "    return res;",
+            "}",
+        ]
+    },
 }

@@ -11,13 +11,13 @@ struct Output {
 
 };
 
-Input getInput(ifstream &in) {
-    Input input;
+Input getInput(ifstream &cin) {
+    Input in;
 
-    return input;
+    return in;
 }
 
-Output getAns(ifstream &in) {
+Output getAns(ifstream &cin) {
     Output out;
 
     return out;
@@ -27,7 +27,7 @@ void check(Input &in, Output &out, Output &ans) {
 
 }
 
-int32_t main(int argc, char *argv[]) {
+int32_t main() {
     ifstream input_stream("io/input.txt");
     ifstream output_stream("io/output.txt");
     ifstream correct_output_stream("stress-testing/brute_output.txt");

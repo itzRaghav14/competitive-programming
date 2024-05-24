@@ -26,7 +26,12 @@
     "bitset": "cpp",
     "unordered_map": "cpp",
     "iosfwd": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "sstream": "cpp",
+    "streambuf": "cpp",
+    "system_error": "cpp",
+    "regex": "cpp",
+    "variant": "cpp"
   },
   "editor.lineNumbers": "relative",
   "editor.tabSize": 4,

@@ -1,8 +1,6 @@
-struct Comb {
-    int n;
-    vector<Mint> _fac, _invfac, _inv;
-    Comb() : n{0}, _fac{1}, _invfac{1}, _inv{0} {}
-    Comb(int n) : Comb() { init(n); }
+namespace comb {
+    int n(0);
+    vector<Mint> _fac{1}, _invfac{1}, _inv{0};
     void init(int m) {
         m = min (m, MOD - 1);
         if (m <= n) return;
@@ -16,4 +14,5 @@ struct Comb {
     Mint invfac(int m) { if (m > n) init(2 * m); return _invfac[m]; }
     Mint inv(int m) { if (m > n) init(2 * m); return _inv[m]; }
     Mint ncr(int n, int r) { if (n < r || r < 0) return 0; return fac(n) * invfac(r) * invfac(n - r); }
-} comb;
+}
+using comb::fac, comb::invfac, comb::inv, comb::ncr;

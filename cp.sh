@@ -54,28 +54,26 @@ if [ $1 = "stress" ]; then
 
 	# Start running testcases until we find a failed testcase
 	for ((i = 1; i <= 10000; i++)); do
-		echo "RUNNING TEST $i ..."
 		./gen.exe $i >io/input.txt
-
 		run_source ./a.exe io/input.txt io/output.txt io/error.txt
 		run_source ./brute.exe io/input.txt stress-testing/brute_output.txt stress-testing/brute_error.txt
-
 		diff=$(diff -w io/output.txt stress-testing/brute_output.txt)
+
 		if [[ "${diff}" != "" ]]; then
-            RED='\033[0;31m'
-            CYAN='\033[0;36m'
-            NC='\033[0m'
-            INPUTS=$(cat io/input.txt)
-            echo -e "${CYAN}${INPUTS}${NC}"
-            echo -e "${RED}FAILED${NC}"
+            echo -e "\n" >&2
+            echo -e "\033[0;36mINPUT\033[0m" >&2
+            cat io/input.txt >&2
+            echo "" >&2
+            echo -e "\033[0;36mOUTPUT\033[0m" >&2
+            cat io/output.txt >&2
+            echo "" >&2
+            echo -e "\033[0;36mEXPECTED OUTPUT\033[0m" >&2
+            cat stress-testing/brute_output.txt >&2
+            echo "" >&2
             break
-		else
-            GREEN='\033[32m'
-            NC='\033[0m'
-            echo -e "${GREEN}PASSED${NC}"
 		fi
-        echo ""
-	done
+        echo $i
+	done | tqdm --total 10000 >> /dev/null
 fi
 
 # For stress testing with checker
@@ -88,28 +86,26 @@ if [ $1 = "stress2" ]; then
 
 	# Start running testcases until we find a failed testcase
 	for ((i = 1; i <= 10000; i++)); do
-		echo "RUNNING TEST $i ..."
 		./gen.exe $i >io/input.txt
-
 		run_source ./a.exe io/input.txt io/output.txt io/error.txt
 		run_source ./brute.exe io/input.txt stress-testing/brute_output.txt stress-testing/brute_error.txt
         ./checker.exe
 
         if [ $? -ne 0 ]; then
-            RED='\033[0;31m'
-            CYAN='\033[0;36m'
-            NC='\033[0m'
-            INPUTS=$(cat io/input.txt)
-            echo -e "${CYAN}${INPUTS}${NC}"
-            echo -e "${RED}FAILED${NC}"
+            echo -e "\n" >&2
+            echo -e "\033[0;36mINPUT\033[0m" >&2
+            cat io/input.txt >&2
+            echo "" >&2
+            echo -e "\033[0;36mOUTPUT\033[0m" >&2
+            cat io/output.txt >&2
+            echo "" >&2
+            cat -e "\033[0;36mEXPECTED OUTPUT\033[0m" >&2
+            cat stress-testing/brute_output.txt >&2
+            echo "" >&2
             break
-        else
-            GREEN='\033[32m'
-            NC='\033[0m'
-            echo -e "${GREEN}PASSED${NC}"
         fi
-        echo ""
-	done
+        echo $i
+	done | tqdm --total 10000 >> /dev/null
 fi
 
 if [ $1 == "clean" ]; then
