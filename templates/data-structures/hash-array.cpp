@@ -11,3 +11,5 @@ template <size_t N = NUM_HASHES> constexpr auto mint_ntuple(const int &v) { retu
 
 using HT = decltype(mint_ntuple(0)); 
 HT hash0 = mint_ntuple(0);
+
+ostream& operator<<(ostream &os, const HT &ht) { os << "( "; apply([&os](auto&&... args) { ((os << args << ' '), ...); }, ht); return os << ")"; }
