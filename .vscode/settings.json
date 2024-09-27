@@ -31,8 +31,11 @@
     "streambuf": "cpp",
     "system_error": "cpp",
     "regex": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "concepts": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "initializer_list": "cpp",
+    "numbers": "cpp"
   },
-  "editor.lineNumbers": "relative",
-  "editor.tabSize": 4,
 }
