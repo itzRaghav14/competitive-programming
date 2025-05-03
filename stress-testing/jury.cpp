@@ -18,6 +18,5 @@ int nxt() {
 }
 
 int32_t main() {
-
-    return 0;
+	return 0;
 }

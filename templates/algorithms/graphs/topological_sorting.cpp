@@ -1,21 +1,18 @@
-// Note: 1-based indexing is used in this snippet.
 vector<int> getTopoSort(vector<vector<int>> &adj) {
-  int n = adj.size() - 1;
-  vector<int> vis(n + 1, 0), topo;
-  auto dfs = [&](auto &&dfs, int u) -> void {
-    vis[u] = 1;
-    for (int v : adj[u]) {
-      if (!vis[v]) {
-        dfs(dfs, v);
-      }
-    }
+  constexpr int obi = 1;  // one based indexing
+  int n = adj.size() - obi;
+  vector<int> indegree(n + obi), topo;
+  queue<int> q;
+  for (int u = obi; u < n + obi; u++)
+    for (int v : adj[u]) indegree[v]++;
+  for (int u = obi; u < n + obi; u++)
+    if (!indegree[u]) q.push(u);
+  while (!q.empty()) {
+    int u = q.front();
+    q.pop();
     topo.push_back(u);
-  };
-  for (int u = 1; u <= n; u++) {
-    if (!vis[u]) {
-      dfs(dfs, u);
-    }
+    for (int v : adj[u])
+      if (--indegree[v] == 0) q.push(v);
   }
-  reverse(topo.begin(), topo.end());
-  return topo;
+  return topo.size() == n ? topo : vector<int>();
 }
