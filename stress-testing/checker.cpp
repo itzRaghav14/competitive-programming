@@ -3,31 +3,23 @@ using namespace std;
 
 #define int long long
 
-struct Input {
-  int n;
-};
+struct Input {};
 
-struct Output {
-  string ans;
-};
+struct Output {};
 
 Input getInput(ifstream &cin) {
   Input in;
-  cin >> in.n;
   return in;
 }
 
 Output getAns(ifstream &cin) {
   Output out;
-  cin >> out.ans;
   return out;
 }
 
-void check(Input &in, Output &out, Output &ans) {
-  if (out.ans != ans.ans) exit(1);
-}
+void check(Input &in, Output &out, Output &ans) {}
 
-int32_t main(int32_t argc, char* argv[]) {
+int32_t main(int32_t argc, char *argv[]) {
   assert(argc >= 4);
   ifstream input_stream(argv[1]);
   ifstream output_stream(argv[2]);

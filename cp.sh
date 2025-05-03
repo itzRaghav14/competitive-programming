@@ -89,7 +89,7 @@ if [ "$1" = "stress2" ]; then
         ./gen.exe "$i" >io/input.txt
         run_source ./a.exe io/input.txt io/output.txt io/error.txt
         run_source ./brute.exe io/input.txt io/expected_output.txt "/dev/null"
-        ./checker.exe
+        ./checker.exe io/input.txt io/output.txt io/expected_output.txt
 
         if [ $? -ne 0 ]; then
             echo -e "\n" >&2
