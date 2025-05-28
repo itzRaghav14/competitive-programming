@@ -71,6 +71,20 @@
     "ratio": "cpp",
     "stack": "cpp",
     "stdexcept": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "__tree": "cpp",
+    "cfenv": "cpp",
+    "charconv": "cpp",
+    "cinttypes": "cpp",
+    "condition_variable": "cpp",
+    "csetjmp": "cpp",
+    "csignal": "cpp",
+    "future": "cpp",
+    "iomanip": "cpp",
+    "scoped_allocator": "cpp",
+    "typeindex": "cpp",
+    "compare": "cpp",
+    "any": "cpp",
+    "stacktrace": "cpp"
   }
 }

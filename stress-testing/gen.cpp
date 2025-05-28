@@ -34,8 +34,6 @@ int32_t main(int32_t argc, char* argv[]) {
   if (arg > 15) N = mp(15, 20), A = mp(1, 255);
   // if (arg > 17) N = mp(3000, 3000), A = mp(1, 255);
 
-  cout << 1 << "\n";
-  cout << rand(1, 100) << '\n';
 
   return 0;
 }

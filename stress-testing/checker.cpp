@@ -17,7 +17,9 @@ Output getAns(ifstream &cin) {
   return out;
 }
 
-void check(Input &in, Output &out, Output &ans) {}
+void check(Input &in, Output &out, Output &ans) {
+
+}
 
 int32_t main(int32_t argc, char *argv[]) {
   assert(argc >= 4);

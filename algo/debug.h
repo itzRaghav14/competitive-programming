@@ -2,6 +2,13 @@
 #define debug(x,y...) cerr << "[" << __LINE__ << "] [ " << #x << " ]\t\t"; debug_struct::_print(y); cerr << endl;
 #define crndl cerr << endl;
 
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+template <typename Type, typename ComparatorFn>
+using ordered_set = tree<Type, null_type, ComparatorFn, rb_tree_tag, tree_order_statistics_node_update>;
+
 struct debug_struct {
     template <typename T> static void _print(T t) { cerr << t; }
     static void _print() { return; }
@@ -19,5 +26,5 @@ struct debug_struct {
     template <class T, class V, class Compare> static void _print(unordered_map <T, V, Compare> mp) {cerr << "[ "; for (auto &i : mp) {_print(i); cerr << " ";} cerr << "]";}
     template <class T, class V, class Compare> static void _print(map <T, V, Compare> mp) {cerr << "[ "; for (auto &i : mp) {_print(i); cerr << " ";} cerr << "]";}
     template <class T, class... V> static void _print(T t, V... v) { _print(t); if (sizeof...(v)) { cerr << ", "; _print(v...); } }
-    // template<typename T, typename ComparatorFn> static void _print(oset<T, ComparatorFn> st) {cerr << "[ "; for (auto i : st) {_print(i); cerr << " ";} cerr << "]";}
+    template<typename T, typename ComparatorFn> static void _print(ordered_set<T, ComparatorFn> st) {cerr << "[ "; for (auto i : st) {_print(i); cerr << " ";} cerr << "]";}
 };
